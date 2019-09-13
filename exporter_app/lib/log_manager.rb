@@ -9,7 +9,7 @@ class LogManager
     log_dir = ExporterApp.base_dir("logs")
     FileUtils.mkdir_p(log_dir)
     @log_file = File.join(log_dir, "exporter_app.out")
-    @log = Logger.new(@log_file)
+    @log = Logger.new($stdout)
     level = ExporterApp.config[:log_level]
     @log.level = Kernel.const_get("Logger::#{level.upcase}")
   end
@@ -54,4 +54,3 @@ class LogManager
   end
 
 end
-
